@@ -1,11 +1,11 @@
 {
-    "name": "ecomlar/products-spec",
-    "description": "Products PHP specification for Ecomlar",
+    "name": "ecomlar/offers-spec",
+    "description": "Offers PHP specification for Ecomlar",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ecomlar\\ProductsSpec\\": "src/"
+            "Ecomlar\\OffersSpec\\": "src/"
         }
     },
     "authors": [

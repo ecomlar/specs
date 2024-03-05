@@ -11,19 +11,24 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ecomlar\\ProductsSpec\\": "specs/products-spec"
+            "Ecomlar\\ProductsSpec\\": "specs/products-spec/src",
+            "Ecomlar\\OffersSpec\\": "specs/offers-spec/src",
+            "Ecomlar\\CategoriesSpec\\": "specs/categories-spec/src"
         }
     },
     "require": {
         "php": "^8.2",
-        "spatie/laravel-data": "^4.2"
+        "spatie/laravel-data": "^4.2",
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
         "symplify/monorepo-builder": "^11.2"
     },
     "replace": {
-        "ecomlar/products-spec": "self.version"
+        "ecomlar/products-spec": "self.version",
+        "ecomlar/offers-spec": "self.version",
+        "ecomlar/categories-spec": "self.version"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

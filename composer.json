@@ -1,22 +1,30 @@
 {
-    "name": "ecomlar/products-spec",
-    "description": "Products PHP specification for Ecomlar",
-    "type": "library",
+    "name": "ecomlar/ecomlar",
+    "description": "Specifications for Ecommerce Laravel",
+    "type": "project",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Ecomlar\\ProductsSpec\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "kEERill",
             "email": "i@popkovkirill.ru"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Ecomlar\\ProductsSpec\\": "specs/products-spec"
+        }
+    },
     "require": {
-        "php": ">=8.2",
-        "webmozart/assert": "^1.10",
+        "php": "^8.2",
         "spatie/laravel-data": "^4.2"
-    }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "symplify/monorepo-builder": "^11.2"
+    },
+    "replace": {
+        "ecomlar/products-spec": "self.version"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

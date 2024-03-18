@@ -1,0 +1,42 @@
+name: Split Packages
+on:
+  push:
+    branches:
+      - main
+      - "0.*"
+    tags:
+      - "*"
+jobs:
+  split_packages:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+         - 'categories-spec'
+         - 'offers-spec'
+         - 'products-spec'
+    steps:
+      - name: Split ${{ matrix.package }}
+        uses: "danharrin/monorepo-split-github-action@v2.3.0"
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          package_directory: "specs/${{ matrix.package }}"
+          repository_organization: "ecomlar"
+          repository_name: "${{ matrix.package }}"
+          user_name: "GitHub Action"
+          user_email: "action@github.com"
+
+      - name: Tag ${{ matrix.package }}
+        if: "startsWith(github.ref, 'refs/tags/')"
+        uses: "danharrin/monorepo-split-github-action@v2.3.0"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          tag: ${GITHUB_REF#refs/tags/}
+          package_directory: "specs/${{ matrix.package }}"
+          repository_organization: "ecomlar"
+          repository_name: "${{ matrix.package }}"
+          user_name: "GitHub Action"
+          user_email: "action@github.com"
